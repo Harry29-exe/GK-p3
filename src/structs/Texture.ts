@@ -75,19 +75,28 @@ export class Color {
 
 }
 
+const Green = new Color([255, 0, 128])
+const Blue = new Color([0,0,255])
+
 export const generateLg = (): Texture => {
     let width = 512
     let height = 512
     let data = new Uint8ClampedArray(width*height*3)
 
-    let r = Math.floor(Math.random() * 255)
-    let g = Math.floor(Math.random() * 255)
-    let b = Math.floor(Math.random() * 255)
+    let r = Green.r
+    let g = Green.g
+    let b = Green.b
     for (let y = 0; y < height; y++) {
-        if (y % 16 === 0) {
-            r = Math.floor(Math.random() * 255)
-            g = Math.floor(Math.random() * 255)
-            b = Math.floor(Math.random() * 255)
+        if (y % 64 === 0) {
+            if (r == 0) {
+                r = Green.r
+                g = Green.g
+                b = Green.b
+            } else {
+                r = Blue.r
+                g = Blue.g
+                b = Blue.b
+            }
         }
 
         for (let x = 0; x < width; x++) {

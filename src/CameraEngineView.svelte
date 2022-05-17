@@ -3,7 +3,7 @@
     import {onMount} from "svelte";
     import {defaultPlain, Mesh, texturedCube} from "./structs/Mesh";
 
-    const width = 900;
+    const width = 1200;
     const height = 700;
     let canvas: HTMLCanvasElement;
     let ctx: CanvasRenderingContext2D;
@@ -12,29 +12,51 @@
     let scene: Mesh = new Mesh([]);
     let cube1 = texturedCube()
         .translateZ(2)
-        .translateX(-1 + 1000)
-    let cube2 = texturedCube()
-        .rotateX(Math.PI / 4)
-        .translateZ(4)
         .translateX(-1)
-    let cube3 = texturedCube()
+    let cube2 = texturedCube()
         .translateZ(2)
         .translateX(0.5)
+    let cube3 = texturedCube()
+        .translateZ(2)
+        .translateX(1.5)
     let cube4 = texturedCube()
-        .rotateX(Math.PI / 4)
         .translateZ(4)
         .translateX(0.5)
 
-    let plain = defaultPlain()
+    let cube5 = texturedCube()
+        .translateZ(4)
+        .translateX(-1.5)
+
+    let cube6 = texturedCube()
+        .translateZ(4)
+        .translateX(2)
+
+    let cube7 = texturedCube()
+        .translateZ(4)
         .translateX(-3)
-        .translateZ(3)
-        .translateY(1.1)
+
+    let cube8= texturedCube()
+        .translateZ(6)
+        .translateX(2)
+
+    let cube9 = texturedCube()
+        .translateZ(6)
+        .translateX(-3)
+
+    // let plain = defaultPlain()
+    //     .translateX(-3)
+    //     .translateZ(3)
+    //     .translateY(1.1)
 
     scene.addMesh(cube1);
-    // scene.addMesh(cube2);
-    // scene.addMesh(plain)
-    // scene.addMesh(cube3);
-    // scene.addMesh(cube4)
+    scene.addMesh(cube2);
+    scene.addMesh(cube3);
+    scene.addMesh(cube4);
+    scene.addMesh(cube5);
+    scene.addMesh(cube6);
+    scene.addMesh(cube7);
+    scene.addMesh(cube8);
+    scene.addMesh(cube9);
 
 
     onMount(() => {
@@ -68,14 +90,11 @@
         ["Rotate -Z", () => camera.cameraPos.rotateNegZ()],
     ]
 
-    // const canvasSize = `height: ${height*2}px; width: ${width*2}px;`
-    const canvasSize = ""
 </script>
 
-<div style="display: flex; justify-content: center">
+<div>
 
-    <canvas id="camera_canvas" bind:this={canvas}
-            style={"border: 3px black solid;"+canvasSize}></canvas>
+    <canvas id="camera_canvas" bind:this={canvas}></canvas>
 
     <div>
         {#each moveActions as action}
@@ -123,5 +142,6 @@
     button {
         width: 200px;
         height: 50px;
+        background-color: aqua;
     }
 </style>

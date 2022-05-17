@@ -16,7 +16,7 @@ export class CameraEngine {
     public readonly cameraInfo: CameraInfo
     public readonly cameraPos = new CameraPos();
 
-    private lightPos: Vec3d = Vec3d.from(-0.5, 0.3, -0.8)
+    private lightPos: Vec3d = Vec3d.from(-500, 300, -800)
     private projector: (tris: Tris) => Tris;
     private ctx: CanvasRenderingContext2D
 
@@ -25,7 +25,7 @@ export class CameraEngine {
     }
 
     public clear(ctx: Ctx) {
-        ctx.fillStyle = 'black'
+        ctx.fillStyle = 'pink'
         ctx.fillRect(0,0,this.cameraInfo.width, this.cameraInfo.height);
     }
 
@@ -195,7 +195,7 @@ class CameraInfo {
 class CameraPos {
     //camera position
     // private vCamera = Vec3d.from(0.194,0.039,1.32)
-    private vCamera = Vec3d.from(1000, 0, 0)
+    private vCamera = Vec3d.from(0, 0, 0)
     //normalized look direction
     private vLookDir = Vec3d.from(0, 0, 1)
     //up vector
